@@ -13,35 +13,22 @@ public class Clock : MonoBehaviour
     private int minute;
     private int second;
 
-    void Start()
-    {
-        hour = DateTime.Now.Hour;
-        minute = DateTime.Now.Minute;
-        second = DateTime.Now.Second;
-        
-        secondsHand.Rotate(secondsHand.right, second * 6);
-        minutesHand.Rotate(minutesHand.right, minute * 6);       
-        hoursHand.Rotate(hoursHand.right, hour * 30);
-    }
-
-
-
+   
     void Update()
     {
         hour = DateTime.Now.Hour;
         minute = DateTime.Now.Minute;
         second = DateTime.Now.Second;
-               
 
         Quaternion rotation = Quaternion.identity;
 
-        rotation.eulerAngles = new Vector3(second * 6, 0, 0);
+        rotation = Quaternion.AngleAxis(second * 6f, transform.right);
         secondsHand.rotation = rotation;
 
-        rotation.eulerAngles = new Vector3(minute * 6, 0, 0);
+        rotation = Quaternion.AngleAxis(minute * 6f, transform.right);
         minutesHand.rotation = rotation;
 
-        rotation.eulerAngles = new Vector3(hour * 30, 0, 0);
-        hoursHand.rotation = rotation;       
+        rotation = Quaternion.AngleAxis(hour * 30f, transform.right);
+        hoursHand.rotation = rotation;
     }
 }
