@@ -40,7 +40,7 @@ public class OnVelocity : MonoBehaviour
         float speed = rigidBody.velocity.magnitude;
         hasBegun = HasVelocityBegun(speed);
 
-        if (HasVelcoityEnded(speed))
+        if (HasVelocityEnded(speed))
             Reset();
     }
 
@@ -57,7 +57,7 @@ public class OnVelocity : MonoBehaviour
         return beginCheck;
     }
 
-    private bool HasVelcoityEnded(float speed)
+    private bool HasVelocityEnded(float speed)
     {
         if (!hasBegun)
             return false;

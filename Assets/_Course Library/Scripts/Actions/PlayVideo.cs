@@ -19,6 +19,7 @@ public class PlayVideo : MonoBehaviour
 
     private VideoPlayer videoPlayer = null;
     private MeshRenderer meshRenderer = null;
+    private AudioSource audioSource = null;
 
     private int index = 0;
 
@@ -26,6 +27,7 @@ public class PlayVideo : MonoBehaviour
     {
         meshRenderer = GetComponent<MeshRenderer>();
         videoPlayer = GetComponent<VideoPlayer>();
+        audioSource = GetComponent<AudioSource>();
 
         if (videoClips.Count > 0)
             videoPlayer.clip = videoClips[0];
@@ -51,6 +53,8 @@ public class PlayVideo : MonoBehaviour
         {
             Stop();
         }
+
+        videoPlayer.SetTargetAudioSource(0, audioSource);
     }
 
     public void NextClip()
@@ -87,12 +91,14 @@ public class PlayVideo : MonoBehaviour
     {
         videoMaterial.color = Color.white;
         videoPlayer.Play();
+        
     }
 
     public void Stop()
     {
         videoMaterial.color = Color.black;
         videoPlayer.Stop();
+        
     }
 
     public void TogglePlayStop()
