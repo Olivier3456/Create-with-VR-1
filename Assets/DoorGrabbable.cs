@@ -14,26 +14,28 @@ public class DoorGrabbable : MonoBehaviour
 
     [SerializeField] private float maxDistance = 0.1f;
 
-    private XRBaseInteractor handGrabbing;
+    private Transform handGrabbing;
 
     private bool droppedHandle = false;
-  
+
+    
 
     // Don't forget to call this method in the Select Exited event of the XR Grab Interactable component of the door!!!!
     public void Grabbed(SelectEnterEventArgs interactor)
     {
-        handGrabbing = interactor.interactorObject as XRBaseInteractor;       
+        handGrabbing = interactor.interactorObject.transform;
     }
 
 
     private void Update()
     {
-        if (Vector3.Distance(handler.position, handGrabbing.transform.position) > maxDistance && !droppedHandle)      // Drops the handle if the hand moves too far away.
+        if (handGrabbing != null && Vector3.Distance(handler.position, handGrabbing.position) > maxDistance && !droppedHandle)      // Drops the handle if the hand moves too far away.
         {
             doorXRGrab.enabled = false;
-            droppedHandle = true;            
-        }
-        else if (Vector3.Distance(handler.position, handGrabbing.transform.position) <= maxDistance && droppedHandle)
+            droppedHandle = true;
+        }        
+        else if ((Vector3.Distance(handler.position, rightHandController.transform.position) <= maxDistance && droppedHandle)
+              || (Vector3.Distance(handler.position, leftHandController.transform.position) <= maxDistance && droppedHandle))
         {
             doorXRGrab.enabled = true;
             droppedHandle = false;
