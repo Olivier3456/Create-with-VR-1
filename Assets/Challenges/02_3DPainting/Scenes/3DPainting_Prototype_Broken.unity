@@ -2543,6 +2543,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeToSave: {fileID: 1634962876}
+  trailPrefab: {fileID: 7631491353434788432, guid: 594d006ac61ca0d4db9a3c2f2cba7eb8,
+    type: 3}
+  MAX_POSITIONS: 1000
 --- !u!1 &750452066
 GameObject:
   m_ObjectHideFlags: 0
