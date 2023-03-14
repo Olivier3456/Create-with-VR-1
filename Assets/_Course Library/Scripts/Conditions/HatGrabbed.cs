@@ -20,7 +20,4 @@ public class HatGrabbed : MonoBehaviour
             grabbed.Invoke();
         }
     }
-
-
-
 }

@@ -6,39 +6,48 @@ using UnityEngine;
 public class HatUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
-    
-    
+
+    private bool cycleDone = false;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("MainCamera"))
         {
-            text.enabled = true;
+            if (!cycleDone) text.enabled = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("MainCamera"))
         {
-            text.enabled = false;
+            DisableText();
         }
     }
 
 
     public void GrabAHat()
     {
-        text.text = "text.text = Grab a hat.";
-        Debug.Log("Grab a hat.");
+        text.text = "Grab a hat.";       
     }
 
     public void PutTheHatOnYourHead()
     {
-        text.text = "Put the hat on your head.";
-        Debug.Log("text.text = Put the hat on your head.");
+        text.text = "Put the hat on your head.";        
     }
 
-    
+    public void DisableText()
+    {
+        text.enabled = false;
+    }
+
+    public void EndOfCycle()
+    {
+        cycleDone = true;
+        DisableText();
+    }
+
+
 
 
 
