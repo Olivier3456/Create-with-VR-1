@@ -2545,7 +2545,7 @@ MonoBehaviour:
   placeToSave: {fileID: 1634962876}
   trailPrefab: {fileID: 7631491353434788432, guid: 594d006ac61ca0d4db9a3c2f2cba7eb8,
     type: 3}
-  MAX_POSITIONS: 1000
+  reductionFactor: 3
 --- !u!1 &750452066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,7 +5812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634962875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.938, y: 0.894, z: 0}
+  m_LocalPosition: {x: 1.938, y: 0.784, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
