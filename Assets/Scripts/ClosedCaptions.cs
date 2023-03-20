@@ -16,19 +16,27 @@ public class ClosedCaptions : MonoBehaviour
 
     private int index = 0;
 
-    private double time;
+    private bool indexChanged = false;
 
     void Update()
     {
-        time = videoPlayer.time;
-
-        if (time > timeIn[index]) captionsText.text = caption[index];
-        if (time > timeOut[index])
+        if (videoPlayer.time > timeIn[index] && videoPlayer.time < timeOut[index])
         {
-            captionsText.text = "";          
-
-            if (index >= caption.Length - 1) index = 0;
-            else index++;
+            captionsText.text = caption[index];
+            indexChanged = false;
         }
+        else if (videoPlayer.time >= timeOut[index])
+        {
+            captionsText.text = "";
+
+            if (!indexChanged)
+            {
+                if (index >= caption.Length - 1) index = 0;
+                else index++;
+                indexChanged = true;
+            }
+        }
+
+        if (!videoPlayer.isPlaying) captionsText.text = "";
     }
 }
