@@ -37,6 +37,6 @@ public class ClosedCaptions : MonoBehaviour
             }
         }
 
-        if (!videoPlayer.isPlaying) captionsText.text = "";
+        if (!videoPlayer.isPlaying) { captionsText.text = ""; index = 0; }
     }
 }
