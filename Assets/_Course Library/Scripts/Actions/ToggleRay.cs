@@ -15,8 +15,8 @@ public class ToggleRay : MonoBehaviour
     [Tooltip("The direct interactor that's switched to")]
     public XRDirectInteractor directInteractor = null;
 
-    private XRRayInteractor rayInteractor = null;
-    private bool isSwitched = false;
+    protected XRRayInteractor rayInteractor = null;
+    protected bool isSwitched = false;
 
     private void Awake()
     {
